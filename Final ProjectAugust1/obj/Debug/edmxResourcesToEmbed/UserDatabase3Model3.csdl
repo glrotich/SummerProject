@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UserDatabase3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AdvisorTB">
+    <Key>
+      <PropertyRef Name="AdvisorID" />
+    </Key>
+    <Property Name="AdvisorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdvisorLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AdvisorFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AdvisorLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="AppointmentTBs" Relationship="Self.FK_AdvisorTB_AppointmentTB" FromRole="AdvisorTB" ToRole="AppointmentTB" />
+    <NavigationProperty Name="StudentTBs" Relationship="Self.FK_AdvisorTB_StudentTB" FromRole="AdvisorTB" ToRole="StudentTB" />
+    <NavigationProperty Name="UserTB" Relationship="Self.FK_UserTB_AdvisorTB" FromRole="AdvisorTB" ToRole="UserTB" />
+  </EntityType>
+  <EntityType Name="AppointmentTB">
+    <Key>
+      <PropertyRef Name="AppointmentID" />
+      <PropertyRef Name="AdvisorID" />
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="AppointmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AppointmentTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="AppointmentDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AppointmentReason" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AdvisorID" Type="Int32" Nullable="false" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AdvisorTB" Relationship="Self.FK_AdvisorTB_AppointmentTB" FromRole="AppointmentTB" ToRole="AdvisorTB" />
+    <NavigationProperty Name="StudentTB" Relationship="Self.FK_StudentTB_AppointmentTB" FromRole="AppointmentTB" ToRole="StudentTB" />
+  </EntityType>
+  <EntityType Name="MessageTB">
+    <Key>
+      <PropertyRef Name="EmailID" />
+      <PropertyRef Name="UserEmail" />
+    </Key>
+    <Property Name="EmailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmailTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="EmailDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EmailText" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmailTo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentTB">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StudentFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AdvisorID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AdvisorTB" Relationship="Self.FK_AdvisorTB_StudentTB" FromRole="StudentTB" ToRole="AdvisorTB" />
+    <NavigationProperty Name="AppointmentTBs" Relationship="Self.FK_StudentTB_AppointmentTB" FromRole="StudentTB" ToRole="AppointmentTB" />
+    <NavigationProperty Name="UserTB" Relationship="Self.FK_UserTB_StudentTB" FromRole="StudentTB" ToRole="UserTB" />
+  </EntityType>
+  <EntityType Name="UserTB">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="AdvisorTBs" Relationship="Self.FK_UserTB_AdvisorTB" FromRole="UserTB" ToRole="AdvisorTB" />
+    <NavigationProperty Name="StudentTBs" Relationship="Self.FK_UserTB_StudentTB" FromRole="UserTB" ToRole="StudentTB" />
+  </EntityType>
+  <Association Name="FK_AdvisorTB_AppointmentTB">
+    <End Role="AdvisorTB" Type="Self.AdvisorTB" Multiplicity="1" />
+    <End Role="AppointmentTB" Type="Self.AppointmentTB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdvisorTB">
+        <PropertyRef Name="AdvisorID" />
+      </Principal>
+      <Dependent Role="AppointmentTB">
+        <PropertyRef Name="AdvisorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AdvisorTB_StudentTB">
+    <End Role="AdvisorTB" Type="Self.AdvisorTB" Multiplicity="1" />
+    <End Role="StudentTB" Type="Self.StudentTB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdvisorTB">
+        <PropertyRef Name="AdvisorID" />
+      </Principal>
+      <Dependent Role="StudentTB">
+        <PropertyRef Name="AdvisorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserTB_AdvisorTB">
+    <End Role="UserTB" Type="Self.UserTB" Multiplicity="1" />
+    <End Role="AdvisorTB" Type="Self.AdvisorTB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTB">
+        <PropertyRef Name="UserName" />
+      </Principal>
+      <Dependent Role="AdvisorTB">
+        <PropertyRef Name="UserName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentTB_AppointmentTB">
+    <End Role="StudentTB" Type="Self.StudentTB" Multiplicity="1" />
+    <End Role="AppointmentTB" Type="Self.AppointmentTB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudentTB">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="AppointmentTB">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserTB_StudentTB">
+    <End Role="UserTB" Type="Self.UserTB" Multiplicity="1" />
+    <End Role="StudentTB" Type="Self.StudentTB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTB">
+        <PropertyRef Name="UserName" />
+      </Principal>
+      <Dependent Role="StudentTB">
+        <PropertyRef Name="UserName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UserDatabase3Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdvisorTBs" EntityType="Self.AdvisorTB" />
+    <EntitySet Name="AppointmentTBs" EntityType="Self.AppointmentTB" />
+    <EntitySet Name="MessageTBs" EntityType="Self.MessageTB" />
+    <EntitySet Name="StudentTBs" EntityType="Self.StudentTB" />
+    <EntitySet Name="UserTBs" EntityType="Self.UserTB" />
+    <AssociationSet Name="FK_AdvisorTB_AppointmentTB" Association="Self.FK_AdvisorTB_AppointmentTB">
+      <End Role="AdvisorTB" EntitySet="AdvisorTBs" />
+      <End Role="AppointmentTB" EntitySet="AppointmentTBs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AdvisorTB_StudentTB" Association="Self.FK_AdvisorTB_StudentTB">
+      <End Role="AdvisorTB" EntitySet="AdvisorTBs" />
+      <End Role="StudentTB" EntitySet="StudentTBs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserTB_AdvisorTB" Association="Self.FK_UserTB_AdvisorTB">
+      <End Role="UserTB" EntitySet="UserTBs" />
+      <End Role="AdvisorTB" EntitySet="AdvisorTBs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentTB_AppointmentTB" Association="Self.FK_StudentTB_AppointmentTB">
+      <End Role="StudentTB" EntitySet="StudentTBs" />
+      <End Role="AppointmentTB" EntitySet="AppointmentTBs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserTB_StudentTB" Association="Self.FK_UserTB_StudentTB">
+      <End Role="UserTB" EntitySet="UserTBs" />
+      <End Role="StudentTB" EntitySet="StudentTBs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

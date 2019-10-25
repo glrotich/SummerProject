@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d62357d2c86a4c3e9dc40143e0a30bfc" Name="Diagram1">
+        <EntityTypeShape EntityType="UserDatabase3Model.AdvisorTB" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserDatabase3Model.AppointmentTB" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserDatabase3Model.MessageTB" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserDatabase3Model.StudentTB" Width="1.5" PointX="8.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserDatabase3Model.UserTB" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <AssociationConnector Association="UserDatabase3Model.FK_AdvisorTB_AppointmentTB" ManuallyRouted="false" />
+        <AssociationConnector Association="UserDatabase3Model.FK_AdvisorTB_StudentTB" ManuallyRouted="false" />
+        <AssociationConnector Association="UserDatabase3Model.FK_UserTB_AdvisorTB" ManuallyRouted="false" />
+        <AssociationConnector Association="UserDatabase3Model.FK_StudentTB_AppointmentTB" ManuallyRouted="false" />
+        <AssociationConnector Association="UserDatabase3Model.FK_UserTB_StudentTB" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UserDatabase2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AdvisorTB">
+    <Key>
+      <PropertyRef Name="AdvisorID" />
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="AdvisorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdvisorLastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AdvisorFirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AdvisorLocation" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AppointmentTB">
+    <Key>
+      <PropertyRef Name="AppointmentID" />
+    </Key>
+    <Property Name="AppointmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AppointmentTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="AppointmentDate" Type="datetime" Nullable="false" />
+    <Property Name="AppointmentReason" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AdvisorID" Type="int" Nullable="false" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MessagesTB">
+    <Key>
+      <PropertyRef Name="EmailID" />
+    </Key>
+    <Property Name="EmailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmailTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="EmailDate" Type="datetime" Nullable="false" />
+    <Property Name="EmailText" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmailTo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserEmail" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentTB">
+    <Key>
+      <PropertyRef Name="StudentID" />
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentLastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="StudentFirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AdvisorID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserTB">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserPassword" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserRole" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserEmail" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_UserTB_AdvisorTB">
+    <End Role="UserTB" Type="Self.UserTB" Multiplicity="1" />
+    <End Role="AdvisorTB" Type="Self.AdvisorTB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTB">
+        <PropertyRef Name="UserName" />
+      </Principal>
+      <Dependent Role="AdvisorTB">
+        <PropertyRef Name="UserName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserTB_StudentTB">
+    <End Role="UserTB" Type="Self.UserTB" Multiplicity="1" />
+    <End Role="StudentTB" Type="Self.StudentTB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTB">
+        <PropertyRef Name="UserName" />
+      </Principal>
+      <Dependent Role="StudentTB">
+        <PropertyRef Name="UserName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UserDatabase2ModelStoreContainer">
+    <EntitySet Name="AdvisorTB" EntityType="Self.AdvisorTB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AppointmentTB" EntityType="Self.AppointmentTB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MessagesTB" EntityType="Self.MessagesTB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentTB" EntityType="Self.StudentTB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserTB" EntityType="Self.UserTB" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_UserTB_AdvisorTB" Association="Self.FK_UserTB_AdvisorTB">
+      <End Role="UserTB" EntitySet="UserTB" />
+      <End Role="AdvisorTB" EntitySet="AdvisorTB" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserTB_StudentTB" Association="Self.FK_UserTB_StudentTB">
+      <End Role="UserTB" EntitySet="UserTB" />
+      <End Role="StudentTB" EntitySet="StudentTB" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

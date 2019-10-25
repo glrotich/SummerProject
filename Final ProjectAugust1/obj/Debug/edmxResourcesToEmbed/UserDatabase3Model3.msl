@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UserDatabase3ModelStoreContainer" CdmEntityContainer="UserDatabase3Entities">
+    <EntitySetMapping Name="AdvisorTBs">
+      <EntityTypeMapping TypeName="UserDatabase3Model.AdvisorTB">
+        <MappingFragment StoreEntitySet="AdvisorTB">
+          <ScalarProperty Name="AdvisorID" ColumnName="AdvisorID" />
+          <ScalarProperty Name="AdvisorLastName" ColumnName="AdvisorLastName" />
+          <ScalarProperty Name="AdvisorFirstName" ColumnName="AdvisorFirstName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AdvisorLocation" ColumnName="AdvisorLocation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AppointmentTBs">
+      <EntityTypeMapping TypeName="UserDatabase3Model.AppointmentTB">
+        <MappingFragment StoreEntitySet="AppointmentTB">
+          <ScalarProperty Name="AppointmentID" ColumnName="AppointmentID" />
+          <ScalarProperty Name="AppointmentTime" ColumnName="AppointmentTime" />
+          <ScalarProperty Name="AppointmentDate" ColumnName="AppointmentDate" />
+          <ScalarProperty Name="AppointmentReason" ColumnName="AppointmentReason" />
+          <ScalarProperty Name="AdvisorID" ColumnName="AdvisorID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MessageTBs">
+      <EntityTypeMapping TypeName="UserDatabase3Model.MessageTB">
+        <MappingFragment StoreEntitySet="MessageTB">
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="EmailTime" ColumnName="EmailTime" />
+          <ScalarProperty Name="EmailDate" ColumnName="EmailDate" />
+          <ScalarProperty Name="EmailText" ColumnName="EmailText" />
+          <ScalarProperty Name="EmailTo" ColumnName="EmailTo" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentTBs">
+      <EntityTypeMapping TypeName="UserDatabase3Model.StudentTB">
+        <MappingFragment StoreEntitySet="StudentTB">
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="StudentLastName" ColumnName="StudentLastName" />
+          <ScalarProperty Name="StudentFirstName" ColumnName="StudentFirstName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AdvisorID" ColumnName="AdvisorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTBs">
+      <EntityTypeMapping TypeName="UserDatabase3Model.UserTB">
+        <MappingFragment StoreEntitySet="UserTB">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

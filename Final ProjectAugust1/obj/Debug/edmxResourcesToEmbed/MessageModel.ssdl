@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UserDatabaseModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AdvisorTB">
+    <Key>
+      <PropertyRef Name="AdvisorId" />
+    </Key>
+    <Property Name="AdvisorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdvisorLastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AdvisorFirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AdvisorUserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AdvisorLocation" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AppointmentTB">
+    <Key>
+      <PropertyRef Name="AppointmentID" />
+    </Key>
+    <Property Name="AppointmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AppointmentTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="AppointmentDate" Type="datetime" Nullable="false" />
+    <Property Name="AppointmentReason" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AdvisorID" Type="int" Nullable="false" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MessageTB">
+    <Key>
+      <PropertyRef Name="EmailId" />
+    </Key>
+    <Property Name="EmailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmailTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="EmailDate" Type="datetime" Nullable="false" />
+    <Property Name="EmailText" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmailTo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmailFrom" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentTB">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentLastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="StudentFirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="StudentUserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="StudentAdvisorID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserTB">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserPassword" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserRole" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserEmail" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="UserDatabaseModel1StoreContainer">
+    <EntitySet Name="AdvisorTB" EntityType="Self.AdvisorTB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AppointmentTB" EntityType="Self.AppointmentTB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MessageTB" EntityType="Self.MessageTB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentTB" EntityType="Self.StudentTB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserTB" EntityType="Self.UserTB" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

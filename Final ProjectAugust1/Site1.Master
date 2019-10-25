@@ -1,0 +1,55 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="Final_ProjectAugust1.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            font-size: xx-large;
+        }
+        .auto-style2 {
+            color: #FF0066;
+        }
+        .auto-style3 {
+            font-size: large;
+            color: #CCCC00;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    &nbsp; <span class="auto-style1">&nbsp;<span class="auto-style2"> BISON APPOINTMENTS&nbsp;&nbsp;&nbsp;&nbsp; </span>
+        <asp:LoginStatus ID="LoginStatus1" runat="server" style="font-size: large" />
+        </span>
+        <br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/MyWork/StudentApp.aspx" CssClass="auto-style3">Student Page</asp:HyperLink>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Home.aspx" CssClass="auto-style3">Home Page</asp:HyperLink>
+&nbsp;&nbsp;&nbsp;
+&nbsp;<asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/MyWork/Messages.aspx" style="font-size: large; color: #CCCC00">Messsages</asp:HyperLink>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <p>
+                    <br />
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+    <p>
+        by Gladys R. &amp; Chris H.</p>
+</body>
+</html>
